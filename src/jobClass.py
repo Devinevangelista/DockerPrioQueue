@@ -1,4 +1,3 @@
-
 class Job:
     def __init__(self, uuid, taskName, priority):
         self.id = uuid

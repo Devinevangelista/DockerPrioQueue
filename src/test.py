@@ -1,4 +1,4 @@
-import queue_1
+import src.queue_1 as queue_1
 
 # Test the queue
 myQueue = queue_1.Queue()

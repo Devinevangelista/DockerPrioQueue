@@ -1,6 +1,7 @@
-import queue_1
-import jobClass
+import src.queue_1 as queue_1
+import src.jobClass as jobClass
 import sys
+
 
 #@description: reads in jobs from input file and stores them in a list of jobs 
 #@param: filepath of inputFile 
