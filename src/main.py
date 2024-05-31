@@ -1,5 +1,5 @@
-import src.queue_1 as queue_1
-import src.jobClass as jobClass
+import queue_1 as queue_1
+import jobClass as jobClass
 import sys
 
 
