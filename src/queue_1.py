@@ -1,4 +1,4 @@
-import src.jobClass as jobClass
+import jobClass as jobClass
 
 class Node(object):
     #self refers to node, data is inside the node
@@ -54,4 +54,41 @@ class Queue(object):
             self.tail = None
         return data
     
+    def DequeueByUUID(self, uuid):
+        #handle empty case
+        if self.isEmpty():
+            return None
+
+        #if head node needs to be removed
+        if self.head.data.id == uuid:
+            self.head = self.head.next
+            if self.head is None:
+                self.tail = None
+            return True
+        
+        #Traverse the rest of the queue to find the node to remove
+        current = self.head
+        while current.next is not None:
+            if current.next.data.id == uuid:
+                if current.next == self.tail:
+                    self.tail = current
+                current.next = current.next.next
+                return True
+            current = current.next
+        return False
+
+    def get_status(self):
+        status = []
+        current = self.head
+        while current is not None:
+            job = current.data
+            status.append({
+                "uuid": job.id,
+                "taskName": job.taskName,
+                "priority": job.priority,
+                "remainingTime":  job.getRemainingTime() 
+            })
+            current = current.next
+            return status
+        
     
