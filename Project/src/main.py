@@ -1,5 +1,5 @@
 import queue_1 as queue_1
-import jobClass as jobClass
+import Project.src.jobClass as jobClass
 import sys
 
 

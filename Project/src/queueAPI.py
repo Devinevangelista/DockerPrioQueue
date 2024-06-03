@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request, make_response
 from flask_restful import Api, Resource
 import queue_1 as queue_1
-import jobClass as jobClass
+import Project.src.jobClass as jobClass
 import io
 
 #initializes the fact we are using Flask API

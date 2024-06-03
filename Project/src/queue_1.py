@@ -1,4 +1,4 @@
-import jobClass as jobClass
+import Project.src.jobClass as jobClass
 
 class Node(object):
     #self refers to node, data is inside the node
