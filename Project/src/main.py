@@ -1,4 +1,4 @@
-import queue_1 as queue_1
+import Project.src.queue_1 as queue_1
 import Project.src.jobClass as jobClass
 import sys
 
