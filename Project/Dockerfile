@@ -1,5 +1,5 @@
 # For more information, please refer to https://aka.ms/vscode-docker-python
-FROM python:3-slim
+FROM python:3.10-slim
 
 # Keeps Python from generating .pyc files in the container
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -7,12 +7,20 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # Turns off buffering for easier container logging
 ENV PYTHONUNBUFFERED=1
 
-# Install pip requirements
-COPY requirements.txt .
-RUN python -m pip install -r requirements.txt
+#install poetry
+RUN pip install poetry
 
+#set work directory
 WORKDIR /app
-COPY . /app
+
+#Copy only necessary files
+COPY pyproject.toml poetry.lock /app/
+
+#install dependenceies
+RUN poetry install --no-root --no-dev
+
+#copy the rest of the application
+COPY . /app/
 
 #port 5000 open to outside this container
 EXPOSE 5000
@@ -23,4 +31,4 @@ RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /
 USER appuser
 
 # During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
-CMD ["python", "queueAPI.py", "input.txt"]
+CMD ["poetry", "run", "flask", "run", "--host=0.0.0.0"]
